@@ -1,0 +1,9 @@
+{
+	"name": "adf-azure-data-project1",
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "d2e7ccc4-2a22-473d-8742-a329167f8155",
+		"tenantId": "7749dd34-ffcf-4b56-9131-61e2702dceeb"
+	}
+}
