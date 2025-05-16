@@ -1,0 +1,17 @@
+{
+	"name": "external table",
+	"properties": {
+		"content": {
+			"query": "CREATE MASTER KEY ENCRYPTION BY PASSWORD ='Shashi@321'\n\n\n-- CREATE DATABASE SCOPED CREDENTIAL cred_shashi\n-- WITH\n--     IDENTITY = 'Managed Identity'\n\n\n-- CREATE EXTERNAL DATA SOURCE source_silver\n-- WITH\n-- (\n--     LOCATION = 'https://azurestoragesta.dfs.core.windows.net/silver',\n--     CREDENTIAL = cred_shashi\n-- )\n\n-- \n\nCREATE EXTERNAL FILE FORMAT parquetfile1\nWITH (\n    FORMAT_TYPE = PARQUET,\n    DATA_COMPRESSION = 'org.apache.hadoop.io.compress.SnappyCodec'\n)\n\n-- create data source to gold layer\n\nCREATE EXTERNAL DATA SOURCE source_gold\nWITH\n(\n    LOCATION = 'https://azurestoragesta.dfs.core.windows.net/gold',\n    CREDENTIAL = cred_shashi\n)\n\n----- create external table  extsales \n\nCREATE EXTERNAL TABLE gold.extsales\nWITH\n(\n    LOCATION = 'extsales',\n    DATA_SOURCE = source_gold,\n    FILE_FORMAT = parquetfile1\n)\nAS\nSELECT * from gold.sales\n\n\n\nSELECT * from gold.extsales\n",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "azdatabase",
+				"poolName": "Built-in"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}

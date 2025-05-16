@@ -1,0 +1,17 @@
+{
+	"name": "create view gold",
+	"properties": {
+		"content": {
+			"query": "\nCREATE VIEW gold.Territory\nAS\nSELECT * from OPENROWSET\n                (\n                    BULK 'https://azurestoragesta.dfs.core.windows.net/silver/Territory/',\n                    format = 'parquet'\n                ) as quer8",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "azdatabase",
+				"poolName": "Built-in"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}

@@ -1,0 +1,17 @@
+{
+	"name": "create schema",
+	"properties": {
+		"content": {
+			"query": "-- SELECT * FROM\n--     OPENROWSET(\n--                 BULK 'https://azurestoragesta.dfs.core.windows.net/silver/Calender/',\n--                 FORMAT = 'PARQUET'\n--     )as query1\n\nCREATE SCHEMA gold;",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "azdatabasesyn",
+				"poolName": "Built-in"
+			},
+			"resultLimit": -1
+		},
+		"type": "SqlQuery"
+	}
+}
